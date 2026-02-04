@@ -1,0 +1,23 @@
+package com.mossy.shared.member.dto.event;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import lombok.Builder;
+
+@Builder
+public record UserPayload(
+    Long id,
+    String email,
+    String name,
+    String address,
+    String nickname,
+    String profileImage,
+    String status,
+    LocalDateTime createdAt,
+    LocalDateTime updatedAt,
+    BigDecimal latitude,
+    BigDecimal longitude
+) {
+
+}
