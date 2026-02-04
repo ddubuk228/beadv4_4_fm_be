@@ -1,7 +1,7 @@
 package com.mossy.shared.member.domain.entity;
 
 import com.mossy.global.jpa.entity.BaseEntity;
-import com.mossy.member.domain.user.UserStatus;
+import com.mossy.shared.member.domain.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,7 +27,7 @@ public abstract class BaseUser extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
-    protected String status = UserStatus.ACTIVE;
+    protected UserStatus status = UserStatus.ACTIVE;
 
     @Column(name = "nickname", nullable = false, unique = true, length = 50)
     protected String nickname;
@@ -47,7 +47,7 @@ public abstract class BaseUser extends BaseEntity {
         String address,
         String nickname,
         String profileImage,
-        String status,
+        UserStatus status,
         BigDecimal longitude,
         BigDecimal latitude
     ) {

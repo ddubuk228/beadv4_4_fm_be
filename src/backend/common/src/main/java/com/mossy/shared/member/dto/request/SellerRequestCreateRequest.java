@@ -1,12 +1,14 @@
 package com.mossy.shared.member.dto.request;
 
+import com.mossy.shared.member.domain.enums.SellerType;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 public record SellerRequestCreateRequest(
-        @NotNull String sellerType,
+        @NotNull SellerType sellerType,
         @NotBlank String storeName,
         @NotBlank String businessNum,
         @NotBlank String representativeName,

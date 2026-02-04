@@ -1,6 +1,8 @@
 package com.mossy.member.domain.seller;
 
 import com.mossy.global.jpa.entity.BaseIdAndTime;
+import com.mossy.shared.member.domain.enums.SellerRequestStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

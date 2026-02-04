@@ -3,6 +3,7 @@ package com.mossy.shared.member.dto.event;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.mossy.shared.member.domain.enums.UserStatus;
 import lombok.Builder;
 
 @Builder
@@ -13,7 +14,7 @@ public record UserPayload(
     String address,
     String nickname,
     String profileImage,
-    String status,
+    UserStatus status,
     LocalDateTime createdAt,
     LocalDateTime updatedAt,
     BigDecimal latitude,

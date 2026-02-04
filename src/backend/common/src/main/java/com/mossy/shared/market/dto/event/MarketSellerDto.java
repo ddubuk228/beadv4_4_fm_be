@@ -1,7 +1,8 @@
 package com.mossy.shared.market.dto.event;
 
-import com.mossy.shared.member.domain.seller.SellerStatus;
-import com.mossy.shared.member.domain.seller.SellerType;
+
+import com.mossy.shared.member.domain.enums.SellerStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 import lombok.Builder;
 
 import java.math.BigDecimal;

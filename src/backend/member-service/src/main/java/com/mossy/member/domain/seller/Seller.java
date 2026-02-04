@@ -1,5 +1,7 @@
 package com.mossy.member.domain.seller;
 
+import com.mossy.shared.member.domain.enums.SellerStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

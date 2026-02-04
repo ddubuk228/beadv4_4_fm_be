@@ -35,7 +35,7 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
 
     // Swagger UI
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3")
 
     // QueryDSL
 //    annotationProcessor("com.querydsl:querydsl-apt:5.1.0:jakarta")

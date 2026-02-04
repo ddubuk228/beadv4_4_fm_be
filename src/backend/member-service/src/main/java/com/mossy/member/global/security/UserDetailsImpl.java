@@ -1,7 +1,6 @@
 package com.mossy.member.global.security;
 
 import com.mossy.shared.member.domain.role.UserRole;
-import com.mossy.member.domain.user.UserStatus;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

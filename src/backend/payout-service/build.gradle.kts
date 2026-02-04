@@ -33,7 +33,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-batch")
 
     // Swagger UI
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3")
 
     // 컴파일 및 런타임 도구
     compileOnly("org.projectlombok:lombok")

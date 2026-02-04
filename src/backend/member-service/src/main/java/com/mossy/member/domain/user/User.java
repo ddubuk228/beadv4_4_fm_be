@@ -1,5 +1,6 @@
 package com.mossy.member.domain.user;
 
+import com.mossy.shared.member.domain.enums.UserStatus;
 import com.mossy.shared.member.domain.role.RoleCode;
 import com.mossy.shared.member.domain.role.UserRole;
 import jakarta.persistence.*;

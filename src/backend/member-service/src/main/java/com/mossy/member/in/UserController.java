@@ -5,7 +5,6 @@ import com.mossy.member.global.security.UserDetailsImpl;
 import com.mossy.member.out.seller.SellerRequestRepository;
 import com.mossy.global.rsData.RsData;
 import com.mossy.member.domain.seller.SellerRequest;
-import com.mossy.member.domain.seller.SellerRequestStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

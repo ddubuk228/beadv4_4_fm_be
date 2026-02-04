@@ -1,5 +1,7 @@
 package com.mossy.shared.member.dto.event;
 
+import com.mossy.shared.member.domain.enums.SellerStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 import lombok.Builder;
 
 import java.math.BigDecimal;
@@ -9,12 +11,12 @@ import java.time.LocalDateTime;
 public record SellerPayload(
         Long sellerId,
         Long userId,
-        String sellerType,
+        SellerType sellerType,
         String storeName,
         String businessNum,
         BigDecimal latitude,
         BigDecimal longitude,
-        String status,
+        SellerStatus status,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 

@@ -9,7 +9,6 @@ import com.mossy.global.exception.ErrorCode;
 import com.mossy.shared.member.domain.role.Role;
 import com.mossy.shared.member.domain.role.RoleCode;
 import com.mossy.member.domain.seller.SellerRequest;
-import com.mossy.member.domain.seller.SellerRequestStatus;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

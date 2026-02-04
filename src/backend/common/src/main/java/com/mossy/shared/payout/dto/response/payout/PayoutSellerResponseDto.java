@@ -1,7 +1,7 @@
 package com.mossy.shared.payout.dto.response.payout;
 
-import com.mossy.shared.member.domain.seller.SellerStatus;
-import com.mossy.shared.member.domain.seller.SellerType;
+import com.mossy.shared.member.domain.enums.SellerStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 
 import java.time.LocalDateTime;
 

@@ -1,8 +1,8 @@
 package com.mossy.shared.member.domain.entity;
 
 import com.mossy.global.jpa.entity.BaseEntity;
-import com.mossy.member.domain.seller.SellerStatus;
-import com.mossy.member.domain.seller.SellerType;
+import com.mossy.shared.member.domain.enums.SellerStatus;
+import com.mossy.shared.member.domain.enums.SellerType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -45,12 +45,12 @@ public abstract class BaseSeller extends BaseEntity {
 
     public BaseSeller(
             Long userId,
-            String sellerType,
+            SellerType sellerType,
             String storeName,
             String businessNum,
             BigDecimal latitude,
             BigDecimal longitude,
-            String status
+            SellerStatus status
     ) {
         this.userId = userId;
         this.sellerType = sellerType;
