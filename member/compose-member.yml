@@ -1,0 +1,22 @@
+services:
+  member-service:
+    build:
+      context: ../src/backend
+      dockerfile: member-service/Dockerfile
+    container_name: member-service
+    restart: always
+    ports:
+      - "8082:8080"
+    env_file:
+      - ../envs/.env.member
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - mossy-network
+
+networks:
+  mossy-network:
+    external: true

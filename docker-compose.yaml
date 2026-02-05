@@ -1,6 +1,6 @@
 include:
-  - deployments/compose-infra.yml
-  - deployments/compose-es.yml
+  - compose-infra.yml
+  - compose-es.yml
   - deployments/compose-app-main.yml
   - deployments/compose-app-finance.yml
   - deployments/compose-app-sub.yml

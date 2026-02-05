@@ -1,0 +1,18 @@
+services:
+  payout-service:
+    build:
+      context: ../src/backend
+      dockerfile: payout-service/Dockerfile
+    container_name: payout-service
+    restart: always
+    ports:
+      - "8084:8080"
+    env_file:
+      - ../envs/.env.common
+      - ../envs/.env.payout
+    networks:
+      - mossy-network
+
+networks:
+  mossy-network:
+    external: true

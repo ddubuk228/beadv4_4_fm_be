@@ -1,0 +1,25 @@
+services:
+gateway-service:
+    build:
+      context: ../src/backend
+      dockerfile: gateway-service/Dockerfile
+    container_name: gateway-service
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../envs/.env.gateway
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - market-service
+      - member-service
+      - cash-service
+      - payout-service
+      - review-service
+    networks:
+      - mossy-network
+
+networks:
+  mossy-network:
+    external: true

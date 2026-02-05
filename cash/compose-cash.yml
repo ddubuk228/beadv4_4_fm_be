@@ -1,0 +1,19 @@
+services:
+  cash-service:
+    build:
+      context: ../src/backend
+      dockerfile: cash-service/Dockerfile
+    container_name: cash-service
+    restart: always
+    ports:
+      - "8083:8080"
+    env_file:
+      - ../envs/.env.cash
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - mossy-network
+
+networks:
+  mossy-network:
+    external: true

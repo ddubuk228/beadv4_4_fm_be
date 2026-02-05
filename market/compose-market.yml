@@ -1,0 +1,26 @@
+services:
+  market-service:
+    build:
+      context: ../src/backend
+      dockerfile: market-service/Dockerfile
+    container_name: market-service
+    restart: always
+    ports:
+      - "8081:8080"
+    env_file:
+      - ../envs/.env.market
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+      condition: service_healthy
+    networks:
+      - mossy-network
+
+networks:
+  mossy-network:
+    external: true
