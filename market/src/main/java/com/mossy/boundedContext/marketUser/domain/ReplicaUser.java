@@ -1,4 +1,4 @@
-package com.mossy.boundedContext.domain.market;
+package com.mossy.boundedContext.marketUser.domain;
 import com.mossy.shared.member.domain.entity.BaseUser;
 import com.mossy.shared.member.domain.enums.UserStatus;
 import jakarta.persistence.Column;

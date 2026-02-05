@@ -1,6 +1,6 @@
-package com.mossy.boundedContext.in.cart;
+package com.mossy.boundedContext.cart.in;
 
-import com.mossy.boundedContext.app.cart.CartFacade;
+import com.mossy.boundedContext.cart.app.CartFacade;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

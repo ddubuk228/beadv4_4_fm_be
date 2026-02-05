@@ -1,7 +1,7 @@
-package com.mossy.boundedContext.app.market;
+package com.mossy.boundedContext.marketUser.app;
 
-import com.mossy.boundedContext.domain.market.MarketSeller;
-import com.mossy.boundedContext.domain.market.MarketUser;
+import com.mossy.boundedContext.marketUser.domain.MarketSeller;
+import com.mossy.boundedContext.marketUser.domain.MarketUser;
 import com.mossy.shared.member.dto.event.SellerPayload;
 import com.mossy.shared.member.dto.event.UserPayload;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package com.mossy.boundedContext.domain.product;
+package com.mossy.boundedContext.product.domain;
 
-import com.mossy.boundedContext.domain.market.MarketSeller;
+import com.mossy.boundedContext.marketUser.domain.MarketSeller;
 import com.mossy.global.jpa.entity.BaseIdAndTime;
 import com.mossy.shared.market.enums.ProductStatus;
 import jakarta.persistence.*;

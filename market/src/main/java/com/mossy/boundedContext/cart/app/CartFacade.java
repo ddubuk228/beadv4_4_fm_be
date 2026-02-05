@@ -1,7 +1,7 @@
-package com.mossy.boundedContext.app.cart;
+package com.mossy.boundedContext.cart.app;
 
+import com.mossy.boundedContext.cart.in.dto.request.CartItemUpdateRequest;
 import com.mossy.shared.market.dto.event.MarketUserDto;
-import com.mossy.shared.market.dto.request.CartItemUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

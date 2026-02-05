@@ -1,4 +1,4 @@
-package com.mossy.boundedContext.app.cart;
+package com.mossy.boundedContext.cart.app;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

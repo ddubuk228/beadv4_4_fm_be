@@ -1,4 +1,4 @@
-package com.mossy.boundedContext.domain.market;
+package com.mossy.boundedContext.marketUser.domain;
 
 import com.mossy.shared.market.dto.event.MarketUserDto;
 import com.mossy.shared.member.domain.enums.UserStatus;

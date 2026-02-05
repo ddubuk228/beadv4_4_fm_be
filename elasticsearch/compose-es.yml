@@ -1,12 +1,12 @@
 services:
   elasticsearch:
     build:
-      context: elasticsearch
-      dockerfile: ./elasticsearch/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     container_name: elasticsearch
     restart: always
     env_file:
-      - ../envs/.env.elasticsearch
+      - .env
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
