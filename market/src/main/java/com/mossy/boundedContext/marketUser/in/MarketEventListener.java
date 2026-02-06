@@ -4,6 +4,7 @@ import com.mossy.boundedContext.cart.app.CartFacade;
 import com.mossy.boundedContext.marketUser.app.MarketFacade;
 import com.mossy.boundedContext.marketUser.domain.MarketSeller;
 import com.mossy.boundedContext.marketUser.domain.MarketUser;
+import com.mossy.boundedContext.order.app.OrderFacade;
 import com.mossy.shared.market.event.MarketUserCreatedEvent;
 import com.mossy.shared.market.event.OrderPaidEvent;
 import com.mossy.shared.market.event.PaymentCompletedEvent;
@@ -24,7 +25,7 @@ import static org.springframework.transaction.event.TransactionPhase.AFTER_COMMI
 public class MarketEventListener {
     private final MarketFacade marketFacade;
     private final CartFacade cartFacade;
-    //private final OrderFacade orderFacade;
+    private final OrderFacade orderFacade;
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)
@@ -56,11 +57,11 @@ public class MarketEventListener {
         cartFacade.createCart(event.buyer());
     }
 
-//    @TransactionalEventListener(phase = AFTER_COMMIT)
-//    @Transactional(propagation = REQUIRES_NEW)
-//    public void PaymentCompletedForOrder(PaymentCompletedEvent event) {
-//        orderFacade.completePayment(event);
-//    }
+    @TransactionalEventListener(phase = AFTER_COMMIT)
+    @Transactional(propagation = REQUIRES_NEW)
+    public void PaymentCompletedForOrder(PaymentCompletedEvent event) {
+        orderFacade.completePayment(event);
+    }
 
     @TransactionalEventListener(phase = AFTER_COMMIT)
     @Transactional(propagation = REQUIRES_NEW)

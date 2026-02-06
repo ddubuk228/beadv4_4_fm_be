@@ -29,11 +29,6 @@ services:
     networks:
       - mossy-network
 
-networks:
-  mossy-network:
-    external: true
-    name: mossy-network
-
 volumes:
   es_data:
     driver: local

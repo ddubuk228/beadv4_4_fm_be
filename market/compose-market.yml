@@ -1,3 +1,7 @@
+include:
+  - ../compose-infra.yml
+  - ../elasticsearch/compose-es.yml
+
 services:
   market:
     build:
@@ -11,9 +15,10 @@ services:
       - .env.market
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - mossy-network
-
-networks:
-  mossy-network:
-    external: true
