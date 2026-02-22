@@ -2,7 +2,6 @@ package com.mossy.kafka.publisher;
 
 import com.mossy.kafka.KafkaTopics;
 import com.mossy.shared.cash.event.PaymentCashRefundEvent;
-import com.mossy.shared.market.event.CouponUseRequestedEvent;
 import com.mossy.shared.market.event.OrderCancelEvent;
 import com.mossy.shared.market.event.OrderPurchaseConfirmedEvent;
 import com.mossy.shared.member.event.SellerJoinedEvent;
