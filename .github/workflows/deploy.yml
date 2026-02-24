@@ -183,7 +183,7 @@ jobs:
           cat > /tmp/ssm-commands.json << EOF
           {
             "commands": [
-              "export KUBECONFIG=/etc/kubernetes/admin.conf",
+              "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml",
               "cd /tmp",
               "rm -rf beadv4_4_fm_be",
               "git clone https://github.com/${{ github.repository }}.git beadv4_4_fm_be",
@@ -218,7 +218,7 @@ jobs:
           COMMAND_ID=$(aws ssm send-command \
             --instance-ids "${INSTANCE_ID}" \
             --document-name "AWS-RunShellScript" \
-            --parameters 'commands=["export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl get pods -n backend"]' \
+            --parameters 'commands=["export KUBECONFIG=/etc/rancher/k3s/k3s.yaml && kubectl get pods -n backend"]' \
             --query "Command.CommandId" \
             --output text)
 
