@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payout
+      app: payout-service
   template:
     metadata:
       labels:
-        app: payout
+        app: payout-service
     spec:
       containers:
-        - name: payout
+        - name: payout-service
           image: ghcr.io/ddubuk228/beadv4_4_fm_be/payout:latest
           imagePullPolicy: Always
           ports:
@@ -58,7 +58,7 @@ metadata:
   namespace: backend
 spec:
   selector:
-    app: payout
+    app: payout-service
   ports:
     - port: 8080
       targetPort: 8080

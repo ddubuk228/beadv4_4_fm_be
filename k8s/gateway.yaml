@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gateway
+      app: gateway-service
   template:
     metadata:
       labels:
-        app: gateway
+        app: gateway-service
     spec:
       containers:
-        - name: gateway
+        - name: gateway-service
           image: ghcr.io/ddubuk228/beadv4_4_fm_be/gateway:latest
           imagePullPolicy: Always
           ports:
@@ -58,7 +58,7 @@ metadata:
   namespace: backend
 spec:
   selector:
-    app: gateway
+    app: gateway-service
   ports:
     - port: 8080
       targetPort: 8080

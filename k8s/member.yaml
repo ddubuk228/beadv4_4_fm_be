@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: member
+      app: member-service
   template:
     metadata:
       labels:
-        app: member
+        app: member-service
     spec:
       containers:
-        - name: member
+        - name: member-service
           image: ghcr.io/ddubuk228/beadv4_4_fm_be/member:latest
           imagePullPolicy: Always
           ports:
@@ -58,7 +58,7 @@ metadata:
   namespace: backend
 spec:
   selector:
-    app: member
+    app: member-service
   ports:
     - port: 8080
       targetPort: 8080
