@@ -33,6 +33,3 @@ volumes:
   es_data:
     driver: local
 
-networks:
-  mossy-network:
-    external: true
