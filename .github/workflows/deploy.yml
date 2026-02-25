@@ -136,6 +136,7 @@ jobs:
           OAUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.OAUTH_GOOGLE_CLIENT_SECRET }}
           KAKAO_CLIENT_ID: ${{ secrets.KAKAO_CLIENT_ID }}
           KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ELASTICSEARCH_HOST: ${{ vars.ELASTICSEARCH_HOST }}
           REDIS_HOST: ${{ vars.REDIS_HOST }}
         run: |
