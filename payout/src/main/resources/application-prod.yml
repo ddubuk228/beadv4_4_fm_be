@@ -19,6 +19,11 @@ spring:
       ddl-auto: validate
     show-sql: false
 
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
+
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
 

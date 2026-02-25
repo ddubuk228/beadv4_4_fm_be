@@ -15,29 +15,29 @@ spring:
       routes:
         # ── Market ──
         - id: market
-          uri: http://market:8081
+          uri: http://market:8080
           predicates:
-            - Path=/api/v1/carts/**, /api/v1/orders/**, /api/v1/payments/**
+            - Path=/api/v1/carts/**, /api/v1/orders/**, /api/v1/coupons/**, /api/v1/seller/orders**, /api/v1/wishlist/**
           filters:
             - name: JwtAuthenticationFilter
 
         # ── Member (공개) ──
         - id: member-public
-          uri: http://member:8082
+          uri: http://member:8080
           predicates:
             - Path=/api/v1/users/signup
 
         # ── Member (인증 필요) ──
         - id: member-private
-          uri: http://member:8082
+          uri: http://member:8080
           predicates:
-            - Path=/api/v1/users/me, /api/v1/users/profile, /api/v1/users/password, /api/v1/users/address, /api/v1/users/phone, /api/v1/users/set-password, /api/v1/users/nickname
+            - Path=/api/v1/users/me, /api/v1/users/profile, /api/v1/users/password, /api/v1/users/address, /api/v1/users/phone, /api/v1/users/set-password, /api/v1/users/nickname, /api/v1/users/profile-image
           filters:
             - name: JwtAuthenticationFilter
 
         # ── Seller 신청 (인증 필요) ──
         - id: seller-request
-          uri: http://member:8082
+          uri: http://member:8080
           predicates:
             - Path=/api/v1/users/seller-request
           filters:
@@ -45,7 +45,7 @@ spring:
 
         # ── Admin 판매자 관리 (인증 필요) ──
         - id: admin-seller
-          uri: http://member:8082
+          uri: http://member:8080
           predicates:
             - Path=/api/v1/admin/seller-requests/**
           filters:
@@ -53,7 +53,7 @@ spring:
 
         # ── Cash ──
         - id: cash
-          uri: http://cash:8083
+          uri: http://cash:8080
           predicates:
             - Path=/api/v1/cash/**
           filters:
@@ -61,7 +61,7 @@ spring:
 
         # ── Payout ──
         - id: payout
-          uri: http://payout:8084
+          uri: http://payout:8080
           predicates:
             - Path=/api/payout/**
           filters:
@@ -69,7 +69,7 @@ spring:
 
         # ── Review ──
         - id: review
-          uri: http://review:8085
+          uri: http://review:8080
           predicates:
             - Path=/api/v1/reviews/**
           filters:
@@ -77,33 +77,48 @@ spring:
 
         # ── Auth (공개 - 로그인/토큰/OAuth2) ──
         - id: auth
-          uri: http://auth:8086
+          uri: http://auth:8080
           predicates:
             - Path=/api/v1/auth/**
 
         # ── Auth OAuth2 ──
         - id: auth-oauth2
-          uri: http://auth:8086
+          uri: http://auth:8080
           predicates:
             - Path=/oauth2/**, /login/oauth2/**
 
         # ── Product ──
         - id: product-public
-          uri: http://product:8090
+          uri: http://product:8080
           predicates:
             - Path=/api/v1/products/search/**, /api/v1/products/{catalogProductId}
             - Method=GET
+          filters:
+            - name: OptionalJwtAuthenticationFilter
 
         - id: product-private
-          uri: http://product:8090
+          uri: http://product:8080
           predicates:
             - Path=/api/v1/products/**
           filters:
             - name: JwtAuthenticationFilter
 
-eureka:
-  client:
-    enabled: false
+        # ── AI Recommendation (공개 + 인증) ──
+        - id: ai-recommendation-personal
+          uri: http://ai:8080
+          predicates:
+            - Path=/api/v1/recommendations/personal
+          filters:
+            - name: JwtAuthenticationFilter
+
+        - id: ai-recommendation-public
+          uri: http://ai:8080
+          predicates:
+            - Path=/api/v1/recommendations/**
+    data:
+      redis:
+        host: ${REDIS_HOST}
+        port: 6379
 
 jwt:
   secret: ${JWT_SECRET}
