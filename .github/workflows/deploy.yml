@@ -122,7 +122,7 @@ jobs:
 
       - name: Generate secret.yaml from template
         env:
-          # Github Secrets & Vars에 등록해둔 값
+          AUTH_REFRESH_TOKEN_PEPPER: ${{ secrets.AUTH_REFRESH_TOKEN_PEPPER }}
           DB_URL: ${{ secrets.DB_URL }}
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -134,6 +134,10 @@ jobs:
           TOSS_SECRET_KEY: ${{ secrets.TOSS_SECRET_KEY }}
           OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}
           OAUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.OAUTH_GOOGLE_CLIENT_SECRET }}
+          KAKAO_CLIENT_ID: ${{ secrets.KAKAO_CLIENT_ID }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          ELASTICSEARCH_HOST: ${{ vars.ELASTICSEARCH_HOST }}
+          REDIS_HOST: ${{ vars.REDIS_HOST }}
         run: |
           envsubst < k8s/secret.yaml > k8s/secret-applied.yaml
 

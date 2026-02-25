@@ -35,9 +35,6 @@ dependencies {
     // API Gateway
     implementation("org.springframework.cloud:spring-cloud-starter-gateway")
 
-    // Eureka Client (나중에 서비스 검색 시 필요)
-    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-
     // Spring Security (Reactive 버전으로 동작)
     implementation("org.springframework.boot:spring-boot-starter-security")
 
