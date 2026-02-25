@@ -64,26 +64,27 @@ jobs:
       matrix:
         include:
           - service: ai
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.ai == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: auth
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.auth == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: cash
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.cash == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: gateway
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.gateway == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: market
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.market == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: member
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.member == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: payout
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.payout == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: product
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.product == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
           - service: review
-            changed: true
+            changed: ${{ needs.detect-changes.outputs.review == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        if: matrix.changed == true
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -103,6 +104,7 @@ jobs:
 
       - name: Build and push ${{ matrix.service }}
         uses: docker/build-push-action@v5
+        if: matrix.changed == true
         with:
           context: .
           file: ./${{ matrix.service }}/Dockerfile
