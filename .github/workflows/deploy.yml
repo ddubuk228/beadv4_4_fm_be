@@ -22,7 +22,7 @@ env:
   # 이전에 설정하신 이미지 경로에 맞게 설정 (ghcr.io/ddubuk228/beadv4_4_fm_be)
   REGISTRY: ghcr.io/${{ github.repository_owner }}/beadv4_4_fm_be
   # 배포할 대상 EC2 인스턴스의 Name 태그값 (본인 AWS 환경에 맞게 변경 필수)
-  EC2_INSTANCE_TAG_NAME: k8s-cluster-node
+  EC2_INSTANCE_TAG_NAME: team07
 
 jobs:
   detect-changes:
@@ -83,18 +83,16 @@ jobs:
             changed: ${{ needs.detect-changes.outputs.review == 'true' || needs.detect-changes.outputs.common == 'true' || needs.detect-changes.outputs.workflow == 'true' }}
     steps:
       - name: Checkout code
-        if: ${{ matrix.changed == 'true' }}
         uses: actions/checkout@v4
+        if: matrix.changed == true
 
       - name: Set up JDK 21
-        if: ${{ matrix.changed == 'true' }}
         uses: actions/setup-java@v4
         with:
           java-version: '21' # 자바 버전
           distribution: 'temurin'
 
       - name: Login to GitHub Container Registry
-        if: ${{ matrix.changed == 'true' }}
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -102,18 +100,17 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        if: ${{ matrix.changed == 'true' }}
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push ${{ matrix.service }}
-        if: ${{ matrix.changed == 'true' }}
         uses: docker/build-push-action@v5
+        if: matrix.changed == true
         with:
           context: .
           file: ./${{ matrix.service }}/Dockerfile
           push: true
-          # ghcr.io/ddubuk228/beadv4_4_fm_be/member:latest 형태로 만들어짐
-          tags: ${{ env.REGISTRY }}/${{ matrix.service }}:latest
+          # ghcr.io/ddubuk228/beadv4_4_fm_be:member-service 형태로 만들어짐
+          tags: ${{ env.REGISTRY }}:${{ matrix.service }}-service
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -125,7 +122,7 @@ jobs:
 
       - name: Generate secret.yaml from template
         env:
-          # Github Secrets & Vars에 등록해둔 값
+          AUTH_REFRESH_TOKEN_PEPPER: ${{ secrets.AUTH_REFRESH_TOKEN_PEPPER }}
           DB_URL: ${{ secrets.DB_URL }}
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
@@ -137,6 +134,11 @@ jobs:
           TOSS_SECRET_KEY: ${{ secrets.TOSS_SECRET_KEY }}
           OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}
           OAUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.OAUTH_GOOGLE_CLIENT_SECRET }}
+          KAKAO_CLIENT_ID: ${{ secrets.KAKAO_CLIENT_ID }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ELASTICSEARCH_HOST: ${{ vars.ELASTICSEARCH_HOST }}
+          REDIS_HOST: ${{ vars.REDIS_HOST }}
         run: |
           envsubst < k8s/secret.yaml > k8s/secret-applied.yaml
 
@@ -183,7 +185,7 @@ jobs:
           cat > /tmp/ssm-commands.json << EOF
           {
             "commands": [
-              "export KUBECONFIG=/etc/kubernetes/admin.conf",
+              "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml",
               "cd /tmp",
               "rm -rf beadv4_4_fm_be",
               "git clone https://github.com/${{ github.repository }}.git beadv4_4_fm_be",
@@ -218,7 +220,7 @@ jobs:
           COMMAND_ID=$(aws ssm send-command \
             --instance-ids "${INSTANCE_ID}" \
             --document-name "AWS-RunShellScript" \
-            --parameters 'commands=["export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl get pods -n backend"]' \
+            --parameters 'commands=["export KUBECONFIG=/etc/rancher/k3s/k3s.yaml && kubectl get pods -n backend"]' \
             --query "Command.CommandId" \
             --output text)
 

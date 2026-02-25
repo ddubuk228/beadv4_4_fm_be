@@ -1,10 +1,12 @@
+server:
+  port: 8080
 spring:
   config:
     activate:
       on-profile: prod
 
   r2dbc:
-    url: r2dbc:${DB_URL}
+    url: r2dbc:${DB_URL}?sslMode=REQUIRE
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 

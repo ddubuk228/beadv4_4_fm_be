@@ -49,6 +49,7 @@ public class AuthSecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/mossy-docs/**").permitAll()
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/login/**", "/oauth2/**").permitAll()
+                        .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().permitAll()
                 );
 
