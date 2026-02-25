@@ -63,6 +63,9 @@ dependencies {
     // Swagger UI (WebFlux)
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.3")
 
+    // Spring Boot Actuator
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
     // 테스트
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
