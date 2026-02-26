@@ -25,6 +25,8 @@ spec:
               value: "prod"
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: "redpanda:29092"
+            - name: MOSSY_FEIGN_MEMBER_URL
+              value: "http://member-service:8080"
           envFrom:
             - secretRef:
                 name: app-secret
