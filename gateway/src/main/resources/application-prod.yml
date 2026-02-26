@@ -92,7 +92,7 @@ spring:
 
         # ── Product ──
         - id: product-public
-          uri: http://product-service:8080
+          uri: http://product:8090
           predicates:
             - Path=/api/v1/products/search/**, /api/v1/products/{catalogProductId}
             - Method=GET
@@ -100,7 +100,7 @@ spring:
             - name: OptionalJwtAuthenticationFilter
 
         - id: product-private
-          uri: http://product-service:8080
+          uri: http://product:8090
           predicates:
             - Path=/api/v1/products/**
           filters:
