@@ -2,6 +2,7 @@ package com.mossy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
@@ -19,7 +20,7 @@ public class GatewaySecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
-                .cors(cors -> cors.withDefaults()) // 추가: Security에 CORS 기본 설정 통합
+                .cors(Customizer.withDefaults())
                 // 1. CSRF, FormLogin, HttpBasic 비활성화 (Stateless API)
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .formLogin(form -> form.disable())
