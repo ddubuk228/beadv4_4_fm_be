@@ -4,15 +4,20 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public record TossCancelPayload(
-    String paymentKey,
     String orderId,
-    String status,
-    List<Cancel> cancels
+    List<Cancel> cancels,
+    List<Long> orderItemIds,
+    String refundType
 ) {
+    public TossCancelPayload {
+        if (orderItemIds == null) {
+            orderItemIds = List.of();
+        }
+    }
+
     public record Cancel(
         BigDecimal cancelAmount,
-        String cancelReason,
-        String canceledAt
+        String cancelReason
     ) {
     }
 }
