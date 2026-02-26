@@ -42,9 +42,6 @@ dependencies {
     // Spring Batch
     implementation("org.springframework.boot:spring-boot-starter-batch")
 
-    // Redisson (분산 락)
-    implementation("org.redisson:redisson-spring-boot-starter:3.27.2")
-
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
@@ -56,9 +53,6 @@ dependencies {
 
     // Swagger UI
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3")
-
-    // Spring Boot Actuator
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // 컴파일 도구 및 DB 드라이버
     compileOnly("org.projectlombok:lombok")
