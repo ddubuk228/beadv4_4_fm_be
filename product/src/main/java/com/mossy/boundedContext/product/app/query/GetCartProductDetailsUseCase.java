@@ -61,8 +61,8 @@ public class GetCartProductDetailsUseCase {
                                     item.getTotalPrice(),
                                     catalogInfo.thumbnailUrl(),
                                     item.getQuantity(),
-                                    item.getOptionCombination()
-
+                                    item.getOptionCombination(),
+                                    item.getWeight()
                             );
                         })
                 )
