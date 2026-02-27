@@ -13,5 +13,6 @@ public record ProductInfoResponse(
         BigDecimal price,
         String thumbnailUrl,
         Integer quantity,
-        String optionCombination
+        String optionCombination,
+        BigDecimal weight
 ) { }
